@@ -3,11 +3,11 @@ import java.util.*;
 
 public class Vowelgen {
     public static void main(String[] args) {
-        // File paths
+        
         String inputFile = "para.txt";
         String outputFile = "vowel_words_output.txt";
 
-        // Map to store word -> count
+        
         Map<String, Integer> vowelWordCounts = new LinkedHashMap<>();
         int totalVowelWords = 0;
 
@@ -20,16 +20,16 @@ public class Vowelgen {
             while ((line = reader.readLine()) != null) {
                 StringTokenizer tokenizer = new StringTokenizer(line);
                 while (tokenizer.hasMoreTokens()) {
-                    String word = tokenizer.nextToken().replaceAll("[^a-zA-Z]", ""); // remove punctuation
+                    String word = tokenizer.nextToken().replaceAll("[^a-zA-Z]", ""); 
                     if (!word.isEmpty() && startsWithVowel(word)) {
-                        word = word.toLowerCase(); // count in case-insensitive way
+                        word = word.toLowerCase(); 
                         vowelWordCounts.put(word, vowelWordCounts.getOrDefault(word, 0) + 1);
                         totalVowelWords++;
                     }
                 }
             }
 
-            // Write results to output file
+            
             writer.write("Words starting with vowels and their counts:\n");
             for (Map.Entry<String, Integer> entry : vowelWordCounts.entrySet()) {
                 writer.write(entry.getKey() + ": " + entry.getValue() + "\n");
